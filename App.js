@@ -2,6 +2,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const product = require('./routes/product.route'); // Imports routes for the products
 const app = express();
+const user = require('./routes/user.route');
 var database = require('./config/database');
 var mongoose = require('mongoose');
 
@@ -17,6 +18,7 @@ db.once('open', function () {
 });
 app.use(bodyParser.json());
 app.use('/products', product);
+app.use('/users', user);
 let port = 1234;
 app.listen(port, () => {
     console.log('Server is up and running on port numner ' + port);
